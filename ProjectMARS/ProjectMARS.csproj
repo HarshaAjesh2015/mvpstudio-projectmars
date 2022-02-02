@@ -29,6 +29,7 @@
 
   <ItemGroup>
     <Folder Include="Drivers\" />
+    <Folder Include="TestResults\2396258f-cacd-4a3f-9baa-919615f0eecf\" />
   </ItemGroup>
 
 </Project>

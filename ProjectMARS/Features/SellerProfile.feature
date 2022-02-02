@@ -14,9 +14,10 @@ Scenario: Succefully login with valid credentials
 
 	Scenario: Seller able to ADD Description
 	Given Successfully logged into the Home Page 
-	And I Clicked on the edit button  
+	And I Clicked on the edit button and add Description
 	Then I should be able to create/add Description
-
+	
+	
 	Scenario: Seller able to Add new Langauges
 	Given Successfully logged into the Home Page 
 	And I clicked on add new on Language option
