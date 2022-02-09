@@ -96,9 +96,9 @@ namespace ProjectMARS.Pages
         public void selectEducation(IWebDriver driver)
         {
             Thread.Sleep(2000);
-            IWebElement eduBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[3]"));
+            var eduBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[3]"));
             eduBtn.Click();
-            IWebElement addnewBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/thead/tr/th[6]/div"));
+            var addnewBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/thead/tr/th[6]/div"));
             addnewBtn.Click();
         }
         public void addEducation(IWebDriver driver, string college, string country, string title, string degree, string year)
@@ -131,13 +131,41 @@ namespace ProjectMARS.Pages
 
         }
 
-public void saveEducation(IWebDriver driver)
+        public void saveEducation(IWebDriver driver)
         {
             Thread.Sleep(1000);
             var addBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[3]/div/input[1]"));
             addBtn.Click();
         }
 
-        
+
+        public void selectCertification(IWebDriver driver)
+        {
+            Thread.Sleep(2000);
+            var certifcateBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[4]"));
+            certifcateBtn.Click();
+            var addnewBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[4]/div"));
+            addnewBtn.Click();
+        }
+        public void addCertification(IWebDriver driver, string certificate, string certifiedfrom, string year)
+        {
+            Thread.Sleep(2000);
+            var certificateBox = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/div/div[1]/div/input"));
+            certificateBox.SendKeys(certificate);
+
+            var certificateFrom = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/div/div[2]/div[1]/input"));
+            certificateFrom.SendKeys(certifiedfrom);
+
+            SelectElement yeardrpdwn = new SelectElement(driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/div/div[2]/div[2]/select")));
+            yeardrpdwn.SelectByText(year);
+
+        }
+
+        public void saveCertification(IWebDriver driver)
+        {
+            Thread.Sleep(2000);
+            var addBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/div/div[3]/input[1]"));
+            addBtn.Click();
+        }
     }
 }

@@ -151,19 +151,24 @@ namespace ProjectMARS.SellerProfileSteps
         [Given(@"I clicked on the add new on Certificaytions option")]
         public void GivenIClickedOnTheAddNewOnCertificaytionsOption()
         {
-
+            ProfilePage profilePage = new ProfilePage();
+            profilePage.selectCertification(driver);
+                
         }
 
         [When(@"The required fields/textboxes are filled")]
         public void WhenTheRequiredFieldsTextboxesAreFilled()
         {
+            ProfilePage profilePage = new ProfilePage();
+            profilePage.addCertification(driver, "internship", "abc", "2011");
 
         }
 
         [Then(@"The result will be ""(.*)""")]
         public void ThenTheResultWillBe(string p0)
         {
-
+            ProfilePage profilePage = new ProfilePage();
+            profilePage.saveCertification(driver);
         }
 
 
