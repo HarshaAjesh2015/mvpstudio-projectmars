@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using ProjectMARS.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,10 +12,12 @@ namespace ProjectMARS.Pages
     {
         public void addDescription(IWebDriver driver, string description)
         {
-            Thread.Sleep(2000);
+            WaitImplementation.WaitToBeVisible(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/div/div/div/h3/span/i", 3);
+
             IWebElement writeBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/div/div/div/h3/span/i"));
             writeBtn.Click();
-            Thread.Sleep(2000);
+
+
 
             var textBox = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/div/div/form/div/div/div[2]/div[1]/textarea"));
             textBox.Clear();
@@ -26,12 +29,14 @@ namespace ProjectMARS.Pages
         {
             var saveBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/div/div/form/div/div/div[2]/button"));
             saveBtn.Click();
+            WaitImplementation.WaitToExist(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/div/div/form/div/div/div[2]/button", 2);
 
         }
 
         public void selectLanguage(IWebDriver driver)
         {
-            Thread.Sleep(2000);
+            WaitImplementation.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[1]", 3);
+
             IWebElement langBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[1]"));
             langBtn.Click();
             IWebElement addBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div"));
@@ -41,13 +46,14 @@ namespace ProjectMARS.Pages
 
         public void addLanguage(IWebDriver driver, string language)
         {
-            Thread.Sleep(2000);
+            //Thread.Sleep(2000);
             var langTextBox = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[1]/input"));
             langTextBox.SendKeys(language);
 
             var langDrpdwn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select"));
             langDrpdwn.Click();
-            Thread.Sleep(1000);
+
+            WaitImplementation.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select/option[4]", 2);
 
             var choseLevel = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select/option[4]"));
             choseLevel.Click();
@@ -57,14 +63,16 @@ namespace ProjectMARS.Pages
 
         public void saveLanguage(IWebDriver driver)
         {
-            Thread.Sleep(1000);
+            WaitImplementation.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[3]/input[1]", 2);
+
             var addBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[3]/input[1]"));
             addBtn.Click();
 
         }
         public void selectSkill(IWebDriver driver)
         {
-            Thread.Sleep(2000);
+            WaitImplementation.WaitToBeVisible(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]", 2);
+
             IWebElement skillBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]"));
             skillBtn.Click();
             IWebElement addnewBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/table/thead/tr/th[3]/div"));
@@ -76,9 +84,11 @@ namespace ProjectMARS.Pages
             var skillTextBox = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[1]/input"));
             skillTextBox.SendKeys(skill);
 
+            WaitImplementation.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[2]/select", 2);
+
             var skillDrpdwn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[2]/select"));
             skillDrpdwn.Click();
-            Thread.Sleep(1000);
+
 
             var skillLevel = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/div[2]/select/option[4]"));
             skillLevel.Click();
@@ -87,7 +97,8 @@ namespace ProjectMARS.Pages
 
         public void saveSkill(IWebDriver driver)
         {
-            Thread.Sleep(1000);
+            WaitImplementation.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/span/input[1]", 2);
+
             var addBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[3]/div/div[2]/div/div/span/input[1]"));
             addBtn.Click();
 
@@ -95,7 +106,8 @@ namespace ProjectMARS.Pages
 
         public void selectEducation(IWebDriver driver)
         {
-            Thread.Sleep(2000);
+            WaitImplementation.WaitToBeVisible(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[3]", 2);
+
             var eduBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[3]"));
             eduBtn.Click();
             var addnewBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/table/thead/tr/th[6]/div"));
@@ -109,7 +121,7 @@ namespace ProjectMARS.Pages
 
             var countrydrpdwn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[1]/div[2]/select"));
             countrydrpdwn.Click();
-            Thread.Sleep(2000);
+
 
             SelectElement selectCountry = new SelectElement(driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[1]/div[2]/select")));
             selectCountry.SelectByText(country);
@@ -133,7 +145,9 @@ namespace ProjectMARS.Pages
 
         public void saveEducation(IWebDriver driver)
         {
-            Thread.Sleep(1000);
+            WaitImplementation.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[3]/div/input[1]", 2);
+
+
             var addBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[4]/div/div[2]/div/div/div[3]/div/input[1]"));
             addBtn.Click();
         }
@@ -141,7 +155,8 @@ namespace ProjectMARS.Pages
 
         public void selectCertification(IWebDriver driver)
         {
-            Thread.Sleep(2000);
+            WaitImplementation.WaitToBeVisible(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[4]", 2);
+
             var certifcateBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[4]"));
             certifcateBtn.Click();
             var addnewBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/table/thead/tr/th[4]/div"));
@@ -163,7 +178,8 @@ namespace ProjectMARS.Pages
 
         public void saveCertification(IWebDriver driver)
         {
-            Thread.Sleep(2000);
+            WaitImplementation.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/div/div[3]/input[1]", 2);
+
             var addBtn = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[5]/div[1]/div[2]/div/div/div[3]/input[1]"));
             addBtn.Click();
         }

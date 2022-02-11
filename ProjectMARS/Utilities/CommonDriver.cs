@@ -6,28 +6,31 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-//namespace ProjectMARS.Utilities
-//{
-    //public class CommonDriver
-    //{
-    //    public IWebDriver driver;
+namespace ProjectMARS.Utilities
+{
+    public class CommonDriver
+    {
 
-    //    [OneTimeSetUp]
-    //    public void LoginFunction()
-    //    {
+        public IWebDriver driver;
+
+        [OneTimeSetUp]
+        public void LoginFunction()
+        {
+            driver = new ChromeDriver();
+            LoginPage loginPage = new LoginPage();
+            loginPage.loginSteps(driver);
             
+        
+        }
+
+        [OneTimeTearDown]
+        public void CloseTestRun()
+
+        {
+            driver.Quit();
+        }
 
 
-           
-    //    }
 
-    //    [OneTimeTearDown]
-    //    public void CloseTestRun()
-    //    {
-    //        driver.Quit();
-    //    }
-
-
-
-//    }
-//}
+    }
+}
